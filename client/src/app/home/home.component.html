@@ -1,0 +1,9 @@
+<div>
+  <button (click)="logOf()">LogOut</button>
+  <span *ngIf="checkFlag">
+    <p>You have subscribed to newsletter</p>
+  </span>
+  <span *ngIf="!checkFlag">
+    <p>You don't have subscription for newsletter</p>
+  </span>
+</div>

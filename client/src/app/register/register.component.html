@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="row">
+    <div class="row">
+      <h4>Sign Up</h4>
+    </div>
+  </div>
+  <form [formGroup]="registrationForm" (ngSubmit)="signUp()">
+    <div class="row">
+      <div class="col-100">
+        <input
+          type="text"
+          id="fname"
+          formControlName="first_name"
+          placeholder="First name.."
+        />
+        <div
+          class="alert alert-danger"
+          style="font-size: 13px"
+          *ngIf="
+            (registerFormControl.first_name || submitted) &&
+            registerFormControl.first_name.errors?.required
+          "
+        >
+          * required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-100">
+        <input
+          type="text"
+          id="lname"
+          formControlName="last_name"
+          placeholder="Last name.."
+        />
+        <div
+          class="alert alert-danger"
+          style="font-size: 13px"
+          *ngIf="
+            (registerFormControl.last_name || submitted) &&
+            registerFormControl.last_name.errors?.required
+          "
+        >
+          *required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-100">
+        <input
+          type="text"
+          id="email"
+          formControlName="email"
+          placeholder="Email id.."
+        />
+        <div
+          class="alert alert-danger"
+          style="font-size: 13px"
+          *ngIf="
+            (registerFormControl.email || submitted) &&
+            registerFormControl.email.errors?.required
+          "
+        >
+          *required
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-100">
+        <input
+          type="text"
+          id="mnum"
+          formControlName="mobile"
+          placeholder="Mobile Number.."
+        />
+        <div
+          class="alert alert-danger"
+          style="font-size: 13px"
+          *ngIf="
+            (registerFormControl.mobile || submitted) &&
+            registerFormControl.mobile.errors?.required
+          "
+        >
+          *required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-100"
+        [appAppinput]="
+          (registerFormControl.password.touched || submitted) &&
+          (registerFormControl.password.errors?.required ||
+            registerFormControl.password.errors?.invalidPassword)
+        "
+      >
+        <input
+          class="pass"
+          type="password"
+          id="pass"
+          formControlName="password"
+          placeholder="Password.."
+        />
+      </div>
+      <div>
+        <div
+          class="alert alert-danger"
+          style="font-size: 13px"
+          *ngIf="
+            (registerFormControl.password || submitted) &&
+            registerFormControl.password.errors?.required
+          "
+        >
+          *required
+        </div>
+        <div
+          *ngIf="
+            registerFormControl.password &&
+            registerFormControl.password.errors?.invalidPassword
+          "
+        >
+          invalid password
+        </div>
+        <div style="font-size: 13px">
+          password must be minimum 8 characters and be a combination of
+          numbers,uppercase and lowercase letters and special characters
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-100">
+        <input type="checkbox" (change)="onCheckboxChange($event)" /><label>
+          Would you like to subscribe newsletter..
+        </label>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <!-- <input type="submit" value="Submit" (click)="signUp()" /> -->
+    <button (click)="signUp()">sign up</button>
+  </div>
+</div>
